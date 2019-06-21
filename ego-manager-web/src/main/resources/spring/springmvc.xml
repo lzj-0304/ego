@@ -24,6 +24,8 @@
    <!-- / = http://localhost:8080/ -->
    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
    <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
+   <mvc:resources location="/WEB-INF/images/"
+                  mapping="/images/**"></mvc:resources>
    <!-- 视图解析器 -->
    <bean id="viewResovler"
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">
