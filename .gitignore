@@ -1,4 +1,10 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.idea
 ego.iml
-/target/
+/ego-code-generate/target
+/ego-common/target
+/ego-manager-web/target
+/ego-rpc/ego-manager/target
+/ego-rpc/ego-pojo/target
+/ego-rpc/ego-service/target
+/ego-rpc/ego-service-impl/target

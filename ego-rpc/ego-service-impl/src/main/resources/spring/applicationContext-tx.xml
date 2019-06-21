@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 事务管理器 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 事务的通知 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="insert*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="add*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="create*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="modify*" isolation="DEFAULT" propagation="REQUIRED" />
+			<tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED" />
+			<!-- 只读事务 -->
+			<tx:method name="select*" isolation="DEFAULT" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED"
+				read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 事务切面的配置 -->
+	<aop:config>
+		<!-- 切点 -->
+		<aop:pointcut expression="execution(* com.bjsxt.ego.rpc.service.impl.*.*(..))"
+			id="txPc" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPc" />
+	</aop:config>
+
+</beans>

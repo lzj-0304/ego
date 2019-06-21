@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   <!-- 加载属性文件 -->
+   <context:property-placeholder location="classpath:resources/*.properties"/>
+   
+   <!-- 获取数据源  德鲁伊 -->
+   <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+    destroy-method="close">
+      <!-- driverClass -->
+      <property name="driverClassName" value="${jdbc.driver}"></property>
+      <!-- jdbc的url -->
+      <property name="url" value="${jdbc.url}"></property>
+      <!-- jdbc的用户名 -->
+      <property name="username" value="${jdbc.user}"></property>
+      <!-- jdbc的密码 -->
+      <property name="password" value="${jdbc.password}"></property>
+      <!-- 数据库连接池的最大连接数 -->
+      <property name="maxActive" value="${druid.maxActive}"></property>
+   </bean>
+   
+   <!-- sqlSessionFactory -->
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <!-- 指定数据源 -->
+      <property name="dataSource" ref="dataSource"></property>
+      <!-- 指定mybatis配置文件的位置 -->
+      <property name="configLocation" value="classpath:mybatis/mybatisConfig.xml"></property>
+      <property name="mapperLocations" value="classpath:com/shsxt/ego/rpc/manager/db/mappers/*.xml" />
+   </bean>
+   
+   <!-- 
+   // 指定mybatis的配置文件
+   String resource = "mybatisConfig.xml";
+   // 获取mybatis配置文件的输入流
+   InputStream is = Resources.getResourceAsInputStream(resource);
+   // 获取SqlSessionFactory
+   SqlSessionFactory factory = new SqlSessionFactoryBuilder.build(is);
+   // 获取SqlSession
+   SqlSession session = factory.openSession();
+   
+   TbItemMapper mapper = session.getMapper(TbItemMapper.class);
+    -->
+   
+   <!-- MapperScannerConfigurer -->
+   <!-- 设置扫描mybatis接口和映射文件所在的包，生成mapper接口的实现类对象，放到spring的容器中 -->
+   <!-- 放到spring中的mapper实现类对象的id是mapper接口类名首字母小写 -->
+   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+      <!-- 多个包用逗号或者分号隔开 -->
+<!--      <property name="basePackage" value="com.bjsxt.hello,com.bjsxt.ego.mapper"></property> -->
+      <property name="basePackage" value="com.shsxt.ego.rpc.manager.db.dao"></property>
+      <!-- 如果有多个SqlSessionFactory的时候用于指定使用哪个，单个可以不用配置 -->
+<!--      <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property> -->
+   </bean>
+      
+</beans>
