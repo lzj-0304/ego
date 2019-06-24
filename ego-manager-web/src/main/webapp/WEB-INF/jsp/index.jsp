@@ -44,6 +44,9 @@
 		    </div>
 		</div>
     </div>
+	<div region="south" align="center">
+		上海尚学堂智能科技有限公司 的icp备案号 （沪ICP备16053543号）
+	</div>
     
 <script type="text/javascript">
 $(function(){

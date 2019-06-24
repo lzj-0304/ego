@@ -1,4 +1,4 @@
-package com.shsxt;
+package com.shsxt.ego;
 
 import static org.junit.Assert.assertTrue;
 

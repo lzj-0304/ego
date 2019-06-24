@@ -37,7 +37,8 @@
 	<!-- 事务切面的配置 -->
 	<aop:config>
 		<!-- 切点 -->
-		<aop:pointcut expression="execution(* com.bjsxt.ego.rpc.service.impl.*.*(..))"
+		<aop:pointcut
+				expression="execution(* com.shsxt.ego.rpc.service.impl.*.*(..))"
 			id="txPc" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPc" />
 	</aop:config>
