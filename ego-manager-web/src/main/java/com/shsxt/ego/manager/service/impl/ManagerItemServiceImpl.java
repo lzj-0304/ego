@@ -4,12 +4,16 @@ import com.shsxt.ego.manager.service.IManagerItemService;
 import com.shsxt.ego.model.EgoResult;
 import com.shsxt.ego.model.PageResult;
 import com.shsxt.ego.rpc.pojo.TbItem;
+import com.shsxt.ego.rpc.pojo.TbItemDesc;
 import com.shsxt.ego.rpc.query.ItemQuery;
+import com.shsxt.ego.rpc.service.IItemDescService;
 import com.shsxt.ego.rpc.service.IItemService;
+import com.shsxt.ego.utils.IDUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -17,6 +21,9 @@ import java.util.List;
 public class ManagerItemServiceImpl implements IManagerItemService {
     @Resource
     private IItemService itemServiceProxy;
+
+    @Resource
+    private IItemDescService itemDescProxy;
 
     @Override
     public PageResult<TbItem> queryItemsByParams(ItemQuery itemQuery) {
@@ -44,4 +51,46 @@ public class ManagerItemServiceImpl implements IManagerItemService {
         //调用远程删除商品信息的服务
         return itemServiceProxy.updateItemStatus(itemIds,3);
     }
+
+    @Override
+    public EgoResult saveItem(TbItem item) {
+        /**
+         *
+         */
+        Date date = new Date();
+
+        //自己产生商品的id，满足后期的分开分表的需求
+        Long id= IDUtils.genItemId();
+
+        //给item对象封装数据
+        item.setId(id);
+        item.setStatus((byte) 1);
+        item.setCreated(date);
+        item.setUpdated(date);
+
+        //创建TbItemDesc对象
+        TbItemDesc tbItemDesc=new TbItemDesc();
+        tbItemDesc.setItemDesc(item.getDesc());
+        tbItemDesc.setItemId(id);
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setUpdated(date);
+
+        return itemServiceProxy.saveItem(item,tbItemDesc);
+    }
+
+    @Override
+    public TbItemDesc queryItemDescByItemId(Long itemId) {
+        return itemDescProxy.queryByItemId(itemId);
+    }
+
+    @Override
+    public EgoResult updateItem(TbItem tbItem) {
+        tbItem.setUpdated(new Date());
+        TbItemDesc itemDesc =itemDescProxy.queryByItemId(tbItem.getId());
+        itemDesc.setItemDesc(tbItem.getDesc());
+        itemDesc.setUpdated(new Date());
+        return itemServiceProxy.updateItem(tbItem,itemDesc);
+    }
+
+
 }

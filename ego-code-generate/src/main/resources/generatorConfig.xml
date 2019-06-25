@@ -37,12 +37,11 @@
         </javaClientGenerator>
 
 
-        <table tableName="tb_item" domainObjectName="TbItem"
+
+        <table tableName="tb_item_param_item" domainObjectName="TbItemParamItem"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
-
-
     </context>
 
 </generatorConfiguration>

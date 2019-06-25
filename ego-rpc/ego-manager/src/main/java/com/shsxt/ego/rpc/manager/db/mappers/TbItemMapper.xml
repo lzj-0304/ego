@@ -166,6 +166,7 @@
           parameterType="com.shsxt.ego.rpc.query.ItemQuery" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/>
     from tb_item
+      order by id desc
   </select>
 
   <update id="updateItemStatus" >
@@ -179,6 +180,7 @@
                 #{id}
             </foreach>
         </where>
+
   </update>
 
 

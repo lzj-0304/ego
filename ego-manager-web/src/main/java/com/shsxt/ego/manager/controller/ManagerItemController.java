@@ -4,8 +4,10 @@ import com.shsxt.ego.manager.service.IManagerItemService;
 import com.shsxt.ego.model.EgoResult;
 import com.shsxt.ego.model.PageResult;
 import com.shsxt.ego.rpc.pojo.TbItem;
+import com.shsxt.ego.rpc.pojo.TbItemDesc;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,6 +18,8 @@ public class ManagerItemController {
 
     @Resource
     private IManagerItemService managerItemService;
+
+
     /***
      * 处理商品信息分页查询的请求
      * **/
@@ -54,6 +58,32 @@ public class ManagerItemController {
     public EgoResult itemDelete(Long[] ids){
         return managerItemService.itemDelete(ids);
     }
+
+
+    /**
+     * 保存商品
+     * @param tbItem
+     * @return
+     */
+    @RequestMapping("item/save")
+    @ResponseBody
+    public EgoResult saveItem(TbItem tbItem){
+        return managerItemService.saveItem(tbItem);
+    }
+
+
+    @RequestMapping("item/desc/{itemId}")
+    @ResponseBody
+    public TbItemDesc desc(@PathVariable Long itemId){
+        return managerItemService.queryItemDescByItemId(itemId);
+    }
+
+    @RequestMapping("item/update")
+    @ResponseBody
+    public EgoResult updateItem(TbItem tbItem){
+        return managerItemService.updateItem(tbItem);
+    }
+
 
 
 

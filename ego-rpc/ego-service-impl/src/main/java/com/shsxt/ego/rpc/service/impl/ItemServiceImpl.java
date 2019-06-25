@@ -4,8 +4,11 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.shsxt.ego.model.EgoResult;
 import com.shsxt.ego.model.PageResult;
+import com.shsxt.ego.rpc.manager.db.dao.TbItemDescMapper;
 import com.shsxt.ego.rpc.manager.db.dao.TbItemMapper;
+import com.shsxt.ego.rpc.manager.db.dao.TbItemParamItemMapper;
 import com.shsxt.ego.rpc.pojo.TbItem;
+import com.shsxt.ego.rpc.pojo.TbItemDesc;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import com.shsxt.ego.rpc.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,12 @@ public class ItemServiceImpl implements IItemService {
 
     @Autowired
     private TbItemMapper itemMapper;
+
+    @Autowired
+    private TbItemDescMapper itemDescMapper;
+
+    @Autowired
+    private TbItemParamItemMapper itemParamItemMapper;
     @Override
     public PageResult<TbItem> queryItemsByParams(ItemQuery itemQuery) {
         //执行分页操作
@@ -42,7 +51,31 @@ public class ItemServiceImpl implements IItemService {
         return new EgoResult();
     }
 
+    @Override
+    public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc) {
+        /**
+         * 商品表
+         *  tb_item
+         * 商品信息描述表
+         *  tb_item_desc
+         */
+        itemMapper.insert(tbItem);
+        itemDescMapper.insert(tbItemDesc);
+        return new EgoResult();
+    }
 
+    @Override
+    public EgoResult updateItem(TbItem tbItem, TbItemDesc tbItemDesc) {
+        /**
+         * 商品表
+         *  tb_item
+         * 商品信息描述表
+         *  tb_item_desc
+         */
+        itemMapper.updateByPrimaryKeySelective(tbItem);
+        itemDescMapper.updateByPrimaryKeySelective(tbItemDesc);
+        return new EgoResult();
+    }
 
 
 }
