@@ -25,19 +25,19 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成映射文件存放位置-->
-        <sqlMapGenerator targetPackage="mappers"
-                         targetProject="C:\java\lotbyte\ego\ego-rpc\ego-manager\src\main\resources">
+        <sqlMapGenerator targetPackage="com.shsxt.ego.rpc.manager.db.mappers"
+                         targetProject="C:\java\lotbyte\ego\ego-rpc\ego-manager\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.shsxt.ego.rpc.manager"
+                             targetPackage="com.shsxt.ego.rpc.manager.db.dao"
                              targetProject="C:\java\lotbyte\ego\ego-rpc\ego-manager\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table tableName="tb_user" domainObjectName="TbUser"
+        <table tableName="tb_item" domainObjectName="TbItem"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>

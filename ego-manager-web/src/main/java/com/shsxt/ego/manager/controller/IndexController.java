@@ -15,6 +15,7 @@ public class IndexController {
 
     @RequestMapping("{page}")
     public String page(@PathVariable String page){
+        System.out.println(page);
         return page;
     }
 }

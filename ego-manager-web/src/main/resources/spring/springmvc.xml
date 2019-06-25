@@ -14,18 +14,25 @@
    <context:component-scan base-package="com.shsxt.ego.manager" />
    
    <!-- mvc:annotation-driven -->
-   <mvc:annotation-driven />
-
+   <!-- mvc 注解驱动 并添加json 支持 -->
+   <mvc:annotation-driven>
+      <mvc:message-converters>
+         <!-- 返回信息为字符串时 处理 -->
+         <bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+         <!-- 将对象转换为json 对象 -->
+         <bean
+                 class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+      </mvc:message-converters>
+   </mvc:annotation-driven>
    <!-- 静态资源映射 -->
    <!-- location:表示资源在项目的真正位置 -->
    <!-- mapping:访问路径 -->
    <!-- /css/** -->
    <!-- http://localhost:8080/css/a/b/c/hello.css -->
    <!-- / = http://localhost:8080/ -->
-   <mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
-   <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
-   <mvc:resources location="/WEB-INF/images/"
-                  mapping="/images/**"></mvc:resources>
+   <!--<mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
+   <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>-->
+   <mvc:default-servlet-handler/>
    <!-- 视图解析器 -->
    <bean id="viewResovler"
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">

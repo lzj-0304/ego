@@ -19,4 +19,6 @@
    <!-- spring容器中存在一个远程服务的代理对象 -->
   	<dubbo:reference interface="com.shsxt.ego.rpc.service.IUserService"
                      id="userServiceProxy"></dubbo:reference>
+    <dubbo:reference interface="com.shsxt.ego.rpc.service.IItemService"
+                     id="itemServiceProxy"></dubbo:reference>
 </beans>

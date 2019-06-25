@@ -34,6 +34,12 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.shsxt</groupId>
+            <artifactId>ego-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         
     </dependencies>
 
