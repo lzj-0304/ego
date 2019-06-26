@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
+
+/**
+ * 模板规格
+ */
 @Controller
 public class ManagerItemParamController {
     @Resource
@@ -20,7 +24,7 @@ public class ManagerItemParamController {
     /***
      * 处理商品信息分页查询的请求
      * **/
-    @RequestMapping(value="itemParam/list")
+    @RequestMapping(value="item/param/list")
     @ResponseBody
     public PageResult<TbItemParam> itemList(ItemParamQuery itemParamQuery){
         return itemParamService.queryItemParamByParams(itemParamQuery);
@@ -30,7 +34,7 @@ public class ManagerItemParamController {
      * 处理根据商品类名id，查询规格模板请求
      * @return
      */
-    @RequestMapping(value="/itemParam/query/{cid}")
+    @RequestMapping(value="item/param/query/{cid}")
     @ResponseBody
     public EgoResult itemParamQuery(@PathVariable Long cid){
         return itemParamService.loadItemParamByCid(cid);
@@ -42,14 +46,14 @@ public class ManagerItemParamController {
      * @param paramData
      * @return
      */
-    @RequestMapping(value="/itemParam/save/{cid}")
+    @RequestMapping(value="item/param/save/{cid}")
     @ResponseBody
     public EgoResult saveItemParam(@PathVariable Long cid,String paramData){
 
         return itemParamService.saveItemParamService(cid, paramData);
     }
 
-    @RequestMapping(value="/itemParam/delete")
+    @RequestMapping(value="item/param/delete")
     @ResponseBody
     public EgoResult deleteItemParam(Long[] ids){
 

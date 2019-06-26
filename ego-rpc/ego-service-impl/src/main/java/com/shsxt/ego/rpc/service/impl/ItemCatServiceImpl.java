@@ -13,7 +13,7 @@ public class ItemCatServiceImpl implements IItemCatService {
     @Autowired
     private TbItemCatMapper itemCatMapper;
     @Override
-    public List<TreeDto> queryAllItemCat() {
-        return itemCatMapper.queryAllItemCat();
+    public List<TreeDto> queryItemCatByParentId(Long id) {
+        return itemCatMapper.queryItemCatByParentId(id);
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shsxt.ego.rpc.manager.db.dao.TbItemCatMapper" >
-  <resultMap id="BaseResultMap" type="com.shsxt.ego.rpc.pojo.TbItemCat" >
+<mapper namespace="com.shsxt.ego.rpc.manager.db.dao.TbContentCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.shsxt.ego.rpc.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -17,23 +17,23 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tb_item_cat
+    from tb_content_category
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_item_cat
+    delete from tb_content_category
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.shsxt.ego.rpc.pojo.TbItemCat" >
-    insert into tb_item_cat (id, parent_id, name, 
+  <insert id="insert" parameterType="com.shsxt.ego.rpc.pojo.TbContentCategory" >
+    insert into tb_content_category (id, parent_id, name, 
       status, sort_order, is_parent, 
       created, updated)
     values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT}, 
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.shsxt.ego.rpc.pojo.TbItemCat" >
-    insert into tb_item_cat
+  <insert id="insertSelective" parameterType="com.shsxt.ego.rpc.pojo.TbContentCategory" >
+    insert into tb_content_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -87,8 +87,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shsxt.ego.rpc.pojo.TbItemCat" >
-    update tb_item_cat
+  <update id="updateByPrimaryKeySelective" parameterType="com.shsxt.ego.rpc.pojo.TbContentCategory" >
+    update tb_content_category
     <set >
       <if test="parentId != null" >
         parent_id = #{parentId,jdbcType=BIGINT},
@@ -114,8 +114,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.shsxt.ego.rpc.pojo.TbItemCat" >
-    update tb_item_cat
+  <update id="updateByPrimaryKey" parameterType="com.shsxt.ego.rpc.pojo.TbContentCategory" >
+    update tb_content_category
     set parent_id = #{parentId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
@@ -127,16 +127,17 @@
   </update>
 
 
-  <select id="queryItemCatByParentId" parameterType="long" resultType="com.shsxt.ego.rpc.dto.TreeDto">
-        SELECT
+  <select id="queryContentCategoryByPid" parameterType="long" resultType="com.shsxt.ego.rpc.dto.TreeDto">
+    SELECT
           id,
           name AS text,
        case
          when is_parent =1 then "closed"
         ELSE "open" end as state
       FROM
-          tb_item_cat
+          tb_content_category
       WHERE
           parent_id = #{id} and status=1
   </select>
+
 </mapper>

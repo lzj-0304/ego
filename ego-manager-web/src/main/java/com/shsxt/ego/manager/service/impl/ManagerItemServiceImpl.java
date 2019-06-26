@@ -88,7 +88,7 @@ public class ManagerItemServiceImpl implements IManagerItemService {
         tbItemParamItem.setItemId(id);
         tbItemParamItem.setCreated(date);
         tbItemParamItem.setUpdated(date);
-        tbItemParamItem.setParamData(item.getParamData());
+        tbItemParamItem.setParamData(item.getItemParams());
 
 
         return itemServiceProxy.saveItem(item,tbItemDesc,tbItemParamItem);
@@ -106,9 +106,11 @@ public class ManagerItemServiceImpl implements IManagerItemService {
         itemDesc.setItemDesc(tbItem.getDesc());
         itemDesc.setUpdated(new Date());
 
+
         TbItemParamItem itemParamItem = itemParamItemServiceProxy.queryItemParamItemByItemId(tbItem.getId());
-        itemParamItem.setParamData(tbItem.getParamData());
+        itemParamItem.setParamData(tbItem.getItemParams());
         itemParamItem.setUpdated(new Date());
+
         return itemServiceProxy.updateItem(tbItem,itemDesc,itemParamItem);
     }
 

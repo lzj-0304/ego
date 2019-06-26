@@ -35,4 +35,6 @@
 				   ref="itemParamServiceImpl"></dubbo:service>
 	<dubbo:service interface="com.shsxt.ego.rpc.service.IItemParamItemService"
 				   ref="itemParamItemServiceImpl"></dubbo:service>
+	<dubbo:service interface="com.shsxt.ego.rpc.service.IContentCategoryService"
+				   ref="contentCategoryServiceImpl"></dubbo:service>
 	 </beans>

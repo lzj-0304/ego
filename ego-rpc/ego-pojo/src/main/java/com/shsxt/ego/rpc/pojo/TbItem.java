@@ -28,14 +28,25 @@ public class TbItem implements Serializable {
 
     private String desc;// 商品描述
 
-    private String paramData;//商品规格参数
+    private String itemParams;//商品规格参数
 
-    public String getParamData() {
-        return paramData;
+    private Long itemParamId;// 商品分类规格id
+
+
+    public Long getItemParamId() {
+        return itemParamId;
     }
 
-    public void setParamData(String paramData) {
-        this.paramData = paramData;
+    public void setItemParamId(Long itemParamId) {
+        this.itemParamId = itemParamId;
+    }
+
+    public String getItemParams() {
+        return itemParams;
+    }
+
+    public void setItemParams(String itemParams) {
+        this.itemParams = itemParams;
     }
 
     public String getDesc() {

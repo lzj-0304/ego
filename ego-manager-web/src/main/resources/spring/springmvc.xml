@@ -30,8 +30,8 @@
    <!-- /css/** -->
    <!-- http://localhost:8080/css/a/b/c/hello.css -->
    <!-- / = http://localhost:8080/ -->
-   <!--<mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
-   <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>-->
+   <mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
+   <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
    <mvc:default-servlet-handler/>
    <!-- 视图解析器 -->
    <bean id="viewResovler"

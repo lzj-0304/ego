@@ -14,14 +14,14 @@ public class TbItemParam implements Serializable {
 
     private String paramData;
 
-    private String cname;
+    private String itemCatName;
 
-    public String getCname() {
-        return cname;
+    public String getItemCatName() {
+        return itemCatName;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setItemCatName(String itemCatName) {
+        this.itemCatName = itemCatName;
     }
 
     public Long getId() {

@@ -12,6 +12,6 @@ public class ItemParamItemServiceImpl  implements IItemParamItemService {
     private TbItemParamItemMapper itemParamItemMapper;
     @Override
     public TbItemParamItem queryItemParamItemByItemId(Long itemId) {
-        return itemParamItemMapper.queryItemParamItemByItemId(itemId);
+        return  itemParamItemMapper.queryItemParamItemByItemId(itemId);
     }
 }

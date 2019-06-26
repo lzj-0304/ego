@@ -106,9 +106,9 @@
   </update>
 
 
-  <select id="itemParamListByParams" resultMap="ResultMapWithBLOBs">
+  <select id="itemParamListByParams" resultType="com.shsxt.ego.rpc.pojo.TbItemParam">
         select
-            p.*,c.name as cname
+            p.id, p.item_cat_id as itemCatId,p.param_data as paramData, p.created , p.updated,c.name as itemCatName
         from tb_item_param p left join tb_item_cat c on p.item_cat_id = c.id
         order by p.created desc
   </select>

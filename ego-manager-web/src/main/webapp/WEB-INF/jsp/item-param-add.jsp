@@ -27,10 +27,12 @@
 	<li class="param">
 		<ul>
 			<li>
-				<input class="easyui-textbox" style="width: 150px;" name="group"/>&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton addParam"  title="添加参数" data-options="plain:true,iconCls:'icon-add'"></a>
+				<input class="easyui-textbox" style="width: 150px;" name="group"/>&nbsp;
+					<a href="javascript:void(0)" class="easyui-linkbutton addParam"  title="添加参数" data-options="plain:true,iconCls:'icon-add'"></a>
 			</li>
 			<li>
-				<span>|-------</span><input  style="width: 150px;" class="easyui-textbox" name="param"/>&nbsp;<a href="javascript:void(0)" class="easyui-linkbutton delParam" title="删除" data-options="plain:true,iconCls:'icon-cancel'"></a>						
+				<span>|-------</span><input  style="width: 150px;" class="easyui-textbox" name="param"/>&nbsp;
+				<a href="javascript:void(0)" class="easyui-linkbutton delParam" title="删除" data-options="plain:true,iconCls:'icon-cancel'"></a>						
 			</li>
 		</ul>
 	</li>
@@ -41,7 +43,7 @@
 			fun:function(node){
 			$(".addGroupTr").hide().find(".param").remove();
 				//  判断选择的目录是否已经添加过规格
-			  $.getJSON("/item/param/query/itemcatid/" + node.id,function(data){
+			  $.getJSON("/item/param/query/"+ node.id,function(data){
 				  if(data.status == 200 && data.data){
 					  $.messager.alert("提示", "该类目已经添加，请选择其他类目。", undefined, function(){
 						 $("#itemParamAddTable .selectItemCat").click();

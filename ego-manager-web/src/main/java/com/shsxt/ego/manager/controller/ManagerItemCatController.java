@@ -4,6 +4,7 @@ import com.shsxt.ego.rpc.dto.TreeDto;
 import com.shsxt.ego.rpc.service.IItemCatService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -19,9 +20,9 @@ public class ManagerItemCatController {
      * 查询所有类目 ztree
      * @return
      */
-    @RequestMapping("itemCat/all")
+    @RequestMapping("item/cat/list")
     @ResponseBody
-    public List<TreeDto>  queryAllItemCat(){
-        return itemCatService.queryAllItemCat();
+    public List<TreeDto>  queryItemCatByParentId(@RequestParam(defaultValue="0",required=false) Long id){
+        return itemCatService.queryItemCatByParentId(id);
     }
 }

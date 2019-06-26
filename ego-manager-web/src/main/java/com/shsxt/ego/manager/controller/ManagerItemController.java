@@ -4,10 +4,8 @@ import com.shsxt.ego.manager.service.IManagerItemService;
 import com.shsxt.ego.model.EgoResult;
 import com.shsxt.ego.model.PageResult;
 import com.shsxt.ego.rpc.pojo.TbItem;
-import com.shsxt.ego.rpc.pojo.TbItemDesc;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -69,13 +67,6 @@ public class ManagerItemController {
     @ResponseBody
     public EgoResult saveItem(TbItem tbItem){
         return managerItemService.saveItem(tbItem);
-    }
-
-
-    @RequestMapping("item/desc/{itemId}")
-    @ResponseBody
-    public TbItemDesc desc(@PathVariable Long itemId){
-        return managerItemService.queryItemDescByItemId(itemId);
     }
 
     @RequestMapping("item/update")

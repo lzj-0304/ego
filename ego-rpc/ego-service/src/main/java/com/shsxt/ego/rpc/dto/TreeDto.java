@@ -4,9 +4,8 @@ import java.io.Serializable;
 
 public class TreeDto implements Serializable {
     private Integer id;
-    private Integer pId;
-    private String name;
-    private Boolean checked=false;// false-未选中  true-选中
+    private String text;
+    private String state ;// false-未选中  true-选中
 
     public Integer getId() {
         return id;
@@ -16,27 +15,19 @@ public class TreeDto implements Serializable {
         this.id = id;
     }
 
-    public Integer getpId() {
-        return pId;
+    public String getText() {
+        return text;
     }
 
-    public void setpId(Integer pId) {
-        this.pId = pId;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getName() {
-        return name;
+    public String getState() {
+        return state;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Boolean getChecked() {
-        return checked;
-    }
-
-    public void setChecked(Boolean checked) {
-        this.checked = checked;
+    public void setState(String state) {
+        this.state = state;
     }
 }
