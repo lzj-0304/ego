@@ -1,10 +1,35 @@
 var itemEditor, zTreeObj;
+
+
+
 $(function () {
     //创建富文本编辑器
     itemEditor = EGO.createEditor("#itemForm [name=desc]");
     //初始化类目选择和图片上传器
     EGO.init({fun:function(node){}});
+
+
+    /**
+     * 绑定对话框关闭触发事件
+     */
+    $("#itemDialog").dialog({
+        onClose:function () {
+            var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+            console.log(treeObj);
+            treeObj.checkAllNodes(true);
+            $("#cid").val("");
+            $("#itemCatName").html("");
+        }
+    });
+
+
+
+
+
 });
+
+
+
 
 function queryItemByParams() {
     $("#itemList").datagrid("load",{
@@ -108,9 +133,48 @@ function openAddItemDialog() {
  * 选择类目
  */
 function selectItemCat() {
+    //加载ztree信息
     loadItemCatInfo();
+    //设置指定节点选中
+    var cid = $("#cid").val();
+    if(cid){
+         zTreeObj.getNodeByParam("id",cid).checked=true;
+    }
     openAddOrUpdateDlg("itemCatDlg","选择类目");
+
+    // 追加商品规格
+
+
+
 }
+
+
+function appendItemParam() {
+    //加载商品规格
+    $.getJSON('/param/item/query/'+data.id,function(_data){
+        if(_data && _data.status == 200 && _data.data && _data.data.paramData){
+            $("#itemForm .params").show();
+            $("#itemForm [name=itemParams]").val(_data.data.paramData);
+            $("#itemForm [name=itemParamId]").val(_data.data.id);
+            //回显商品规格
+            var paramData = JSON.parse(_data.data.paramData);
+            var html = "<ul>";
+            for(var i in paramData){
+                var pd = paramData[i];
+                html+="<li><table>";
+                html+="<tr><td colspan=\"2\" class=\"group\">"+pd.group+"</td></tr>";
+                for(var j in pd.params){
+                    var ps = pd.params[j];
+                    html+="<tr><td class=\"param\"><span>"+ps.k+"</span>: </td><td><input autocomplete=\"off\" type=\"text\" value='"+ps.v+"'/></td></tr>";
+                }
+                html+="</li></table>";
+            }
+            html+= "</ul>";
+            $("#itemForm .params td").eq(1).html(html);
+        }
+    });
+}
+
 
 /**
  * 加载类目信息
@@ -119,6 +183,7 @@ function loadItemCatInfo() {
     $.ajax({
         type:"post",
         url:"itemCat/all",
+        async:false,
         dataType:"json",
         success:function (data) {
             // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
@@ -135,14 +200,13 @@ function loadItemCatInfo() {
                 check: {
                     enable: true,
                     chkStyle:"radio",
-                    chkboxType: { "Y": "ps", "N": "ps" }
+                    checkboxType : "all"
                 },
                 callback: {
                     onCheck: zTreeOnCheck
                 }
             };
-            var zNodes =data;
-            zTreeObj=$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            zTreeObj=$.fn.zTree.init($("#treeDemo"), setting, data);
         }
     })
 }
@@ -177,11 +241,8 @@ function openModifyItemDialog() {
     data.priceView = EGO.formatPrice(data.price);
     //完成data数据的回显
     $("#itemForm").form("load",data);
-    /**
-     * 商品描述信息 先清空原始描述信息 在设置新的描述信息
-     */
-    itemEditor.html("");
     // 加载商品描述，回显商品的描述信息
+    itemEditor.html("");
     $.getJSON('/item/desc/'+data.id,function(_data){
         //创建富文本编辑器
         itemEditor.html(_data.itemDesc);
