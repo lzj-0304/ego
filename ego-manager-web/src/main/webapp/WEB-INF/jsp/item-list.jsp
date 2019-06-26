@@ -6,8 +6,6 @@
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <script type="text/javascript" src="js/zTree_v3-3.5.32/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="js/zTree_v3-3.5.32/js/jquery.ztree.excheck.min.js"></script>
-
-
 <!--
   表格数据
 -->

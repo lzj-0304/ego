@@ -33,7 +33,6 @@ public class ItemServiceImpl implements IItemService {
     public PageResult<TbItem> queryItemsByParams(ItemQuery itemQuery) {
         //执行分页操作
         Page ps = PageHelper.startPage(itemQuery.getPage(), itemQuery.getRows());
-        TbItem example=new  TbItem();
         //执行数据库查询操作
         List<TbItem> list = itemMapper.itemListByParams(itemQuery);
         PageResult<TbItem> result = new PageResult<TbItem>();

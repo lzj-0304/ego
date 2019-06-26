@@ -104,4 +104,26 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <select id="itemParamListByParams" resultMap="ResultMapWithBLOBs">
+        select
+            p.*,c.name as cname
+        from tb_item_param p left join tb_item_cat c on p.item_cat_id = c.id
+        order by p.created desc
+  </select>
+
+
+  <delete id="deleteItemParam">
+        delete from tb_item_param
+        where id in
+        <foreach collection="list" open="(" item="id" separator="," close=")">
+            #{id}
+        </foreach>
+  </delete>
+
+  <select id="loadItemParamByCid" parameterType="long" resultMap="ResultMapWithBLOBs">
+    select  p.*
+    from tb_item_param p where p.item_cat_id=#{cid}
+  </select>
 </mapper>
