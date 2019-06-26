@@ -104,4 +104,21 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="queryItemParamItemByItemId" resultMap="ResultMapWithBLOBs" parameterType="long" >
+    select
+    <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+    from tb_item_param_item
+    where item_id = #{itemId}
+  </select>
+
+  <delete id="deleteByItemIds" >
+    delete from tb_item_param_item
+    <where>
+      item_id in
+      <foreach collection="list" item="id" open="(" separator="," close=")">
+        #{id}
+      </foreach>
+    </where>
+  </delete>
 </mapper>

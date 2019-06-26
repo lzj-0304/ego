@@ -5,8 +5,10 @@ import com.shsxt.ego.model.EgoResult;
 import com.shsxt.ego.model.PageResult;
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.pojo.TbItemDesc;
+import com.shsxt.ego.rpc.pojo.TbItemParamItem;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import com.shsxt.ego.rpc.service.IItemDescService;
+import com.shsxt.ego.rpc.service.IItemParamItemService;
 import com.shsxt.ego.rpc.service.IItemService;
 import com.shsxt.ego.utils.IDUtils;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,10 @@ public class ManagerItemServiceImpl implements IManagerItemService {
     private IItemService itemServiceProxy;
 
     @Resource
-    private IItemDescService itemDescProxy;
+    private IItemDescService itemDescServiceProxy;
+
+    @Resource
+    private IItemParamItemService itemParamItemServiceProxy;
 
     @Override
     public PageResult<TbItem> queryItemsByParams(ItemQuery itemQuery) {
@@ -49,7 +54,7 @@ public class ManagerItemServiceImpl implements IManagerItemService {
     public EgoResult itemDelete(Long[] ids) {
         List<Long> itemIds = Arrays.asList(ids);
         //调用远程删除商品信息的服务
-        return itemServiceProxy.updateItemStatus(itemIds,3);
+        return itemServiceProxy.itemDelete(itemIds);
     }
 
     @Override
@@ -75,21 +80,36 @@ public class ManagerItemServiceImpl implements IManagerItemService {
         tbItemDesc.setCreated(date);
         tbItemDesc.setUpdated(date);
 
-        return itemServiceProxy.saveItem(item,tbItemDesc);
+
+        /**
+         * 创建TbItemParamItem 对象 添加商品规格信息
+         */
+        TbItemParamItem tbItemParamItem =new TbItemParamItem();
+        tbItemParamItem.setItemId(id);
+        tbItemParamItem.setCreated(date);
+        tbItemParamItem.setUpdated(date);
+        tbItemParamItem.setParamData(item.getParamData());
+
+
+        return itemServiceProxy.saveItem(item,tbItemDesc,tbItemParamItem);
     }
 
     @Override
     public TbItemDesc queryItemDescByItemId(Long itemId) {
-        return itemDescProxy.queryByItemId(itemId);
+        return itemDescServiceProxy.queryItemDescByItemId(itemId);
     }
 
     @Override
     public EgoResult updateItem(TbItem tbItem) {
         tbItem.setUpdated(new Date());
-        TbItemDesc itemDesc =itemDescProxy.queryByItemId(tbItem.getId());
+        TbItemDesc itemDesc =itemDescServiceProxy.queryItemDescByItemId(tbItem.getId());
         itemDesc.setItemDesc(tbItem.getDesc());
         itemDesc.setUpdated(new Date());
-        return itemServiceProxy.updateItem(tbItem,itemDesc);
+
+        TbItemParamItem itemParamItem = itemParamItemServiceProxy.queryItemParamItemByItemId(tbItem.getId());
+        itemParamItem.setParamData(tbItem.getParamData());
+        itemParamItem.setUpdated(new Date());
+        return itemServiceProxy.updateItem(tbItem,itemDesc,itemParamItem);
     }
 
 

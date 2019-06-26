@@ -12,7 +12,7 @@ public class ItemDescServiceImpl implements IItemDescService {
     @Resource
     private TbItemDescMapper itemDescMapper;
     @Override
-    public TbItemDesc queryByItemId(Long itemId) {
+    public TbItemDesc queryItemDescByItemId(Long itemId) {
         return itemDescMapper.selectByPrimaryKey(itemId);
     }
 }

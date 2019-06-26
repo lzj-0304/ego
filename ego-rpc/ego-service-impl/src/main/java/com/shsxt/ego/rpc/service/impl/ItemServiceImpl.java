@@ -9,6 +9,7 @@ import com.shsxt.ego.rpc.manager.db.dao.TbItemMapper;
 import com.shsxt.ego.rpc.manager.db.dao.TbItemParamItemMapper;
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.pojo.TbItemDesc;
+import com.shsxt.ego.rpc.pojo.TbItemParamItem;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import com.shsxt.ego.rpc.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,20 +52,23 @@ public class ItemServiceImpl implements IItemService {
     }
 
     @Override
-    public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc) {
+    public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc, TbItemParamItem itemParamItem) {
         /**
          * 商品表
          *  tb_item
          * 商品信息描述表
          *  tb_item_desc
+         *  商品规格信息
+         *    tb_item_param_item
          */
-        itemMapper.insert(tbItem);
-        itemDescMapper.insert(tbItemDesc);
+        itemMapper.insertSelective(tbItem);
+        itemDescMapper.insertSelective(tbItemDesc);
+        itemParamItemMapper.insertSelective(itemParamItem);
         return new EgoResult();
     }
 
     @Override
-    public EgoResult updateItem(TbItem tbItem, TbItemDesc tbItemDesc) {
+    public EgoResult updateItem(TbItem tbItem, TbItemDesc tbItemDesc, TbItemParamItem itemParamItem) {
         /**
          * 商品表
          *  tb_item
@@ -73,6 +77,26 @@ public class ItemServiceImpl implements IItemService {
          */
         itemMapper.updateByPrimaryKeySelective(tbItem);
         itemDescMapper.updateByPrimaryKeySelective(tbItemDesc);
+        itemParamItemMapper.updateByPrimaryKeySelective(itemParamItem);
+        return new EgoResult();
+    }
+
+
+    /**
+     * 删除商品记录
+     * @param itemIds
+     * @return
+     */
+    @Override
+    public EgoResult itemDelete(List<Long> itemIds) {
+        /**
+         * 批量更新商品状态
+         * 批量删除商品描述信息
+         * 批量删除商品规格信息
+         */
+        itemDescMapper.deleteByItemIds(itemIds);
+        itemParamItemMapper.deleteByItemIds(itemIds);
+        itemMapper.itemDelete(itemIds);
         return new EgoResult();
     }
 

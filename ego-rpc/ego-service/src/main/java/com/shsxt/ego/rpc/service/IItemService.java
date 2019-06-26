@@ -4,6 +4,7 @@ import com.shsxt.ego.model.EgoResult;
 import com.shsxt.ego.model.PageResult;
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.pojo.TbItemDesc;
+import com.shsxt.ego.rpc.pojo.TbItemParamItem;
 import com.shsxt.ego.rpc.query.ItemQuery;
 
 import java.util.List;
@@ -24,7 +25,9 @@ public interface IItemService {
     EgoResult updateItemStatus(List<Long> itemIds, Integer status);
 
 
-    EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc);
+    EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc, TbItemParamItem itemParamItem);
 
-    EgoResult updateItem(TbItem tbItem,TbItemDesc tbItemDesc);
+    EgoResult updateItem(TbItem tbItem,TbItemDesc tbItemDesc, TbItemParamItem itemParamItem);
+
+    EgoResult itemDelete(List<Long> itemIds);
 }

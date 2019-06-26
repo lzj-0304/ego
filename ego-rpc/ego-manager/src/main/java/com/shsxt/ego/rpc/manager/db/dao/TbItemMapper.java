@@ -23,4 +23,5 @@ public interface TbItemMapper {
 
     Integer updateItemStatus(Map<String, Object> params);
 
+    Integer itemDelete(List<Long> itemIds);
 }

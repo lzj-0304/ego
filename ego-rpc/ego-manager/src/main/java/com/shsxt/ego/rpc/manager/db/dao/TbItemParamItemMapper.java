@@ -2,6 +2,8 @@ package com.shsxt.ego.rpc.manager.db.dao;
 
 import com.shsxt.ego.rpc.pojo.TbItemParamItem;
 
+import java.util.List;
+
 public interface TbItemParamItemMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -16,4 +18,9 @@ public interface TbItemParamItemMapper {
     int updateByPrimaryKeyWithBLOBs(TbItemParamItem record);
 
     int updateByPrimaryKey(TbItemParamItem record);
+
+
+    TbItemParamItem queryItemParamItemByItemId(Long itemId);
+
+    Integer deleteByItemIds(List<Long> itemIds);
 }

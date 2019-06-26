@@ -92,4 +92,14 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where item_id = #{itemId,jdbcType=BIGINT}
   </update>
+
+  <delete id="deleteByItemIds" >
+    delete from tb_item_desc
+    <where>
+      item_id in
+      <foreach collection="list" item="id" open="(" separator="," close=")">
+        #{id}
+      </foreach>
+    </where>
+  </delete>
 </mapper>

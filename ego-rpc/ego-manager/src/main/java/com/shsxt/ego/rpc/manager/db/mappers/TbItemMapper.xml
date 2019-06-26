@@ -180,8 +180,21 @@
                 #{id}
             </foreach>
         </where>
-
   </update>
+
+  <update id="itemDelete" >
+    update tb_item
+    <set>
+      status = 3
+    </set>
+    <where>
+      id in
+      <foreach collection="list" item="id" open="(" separator="," close=")">
+        #{id}
+      </foreach>
+    </where>
+  </update>
+
 
 
 
