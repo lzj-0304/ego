@@ -9,3 +9,4 @@ ego.iml
 /ego-rpc/ego-service/target
 /ego-rpc/ego-service-impl/target
 /ego-portal-web/target
+/ego-sso-web/target
