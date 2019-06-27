@@ -19,4 +19,6 @@ public interface TbContentCategoryMapper {
     int updateByPrimaryKey(TbContentCategory record);
 
     List<TreeDto> queryContentCategoryByPid(Long id);
+
+    int countSubCategoryByPid(Long pid);
 }

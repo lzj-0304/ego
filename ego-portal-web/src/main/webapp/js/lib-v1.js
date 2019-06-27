@@ -1172,7 +1172,7 @@ $.extend(jdModelCallCenter, {autoLocation: function(a) {
 var category = {OBJ: $("#_JD_ALLSORT"),
 		//URL_Serv: "http://manage.ego.com/web/itemcat/all?callback=category.getDataService",
 		//URL_Serv: "http://127.0.0.1:8081/rest/itemcat/all?callback=category.getDataService",
-		//URL_Serv:'js/itemCat.json',
+		//URL_Serv:'/js/itemCat.json',
 		URL_Serv:'/item/cat.html',
 		//URL_Serv:"http://localhost:6060/itemCat?callback=category.getDataService",
 		//URL_Serv: "http://localhost:8082/category.json",

@@ -1,4 +1,4 @@
-Date.prototype.format = function(format){ 
+onePicUploadDate.prototype.format = function(format){
     var o =  { 
     "M+" : this.getMonth()+1, //month 
     "d+" : this.getDate(), //day 

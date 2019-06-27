@@ -140,4 +140,12 @@
           parent_id = #{id} and status=1
   </select>
 
+
+  <select id="countSubCategoryByPid" parameterType="long" resultType="int">
+      select count(1)
+        FROM
+          tb_content_category
+      WHERE
+          parent_id = #{id} and status=1
+  </select>
 </mapper>

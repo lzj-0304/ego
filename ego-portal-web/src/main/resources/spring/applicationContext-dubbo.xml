@@ -12,6 +12,11 @@
    <!-- 指定注册中心 -->
    <dubbo:registry address="127.0.0.1:2181" protocol="zookeeper" />
 
+   <dubbo:reference interface="com.shsxt.ego.rpc.service.IItemCatService"
+                    id="itemCatServiceProxy"></dubbo:reference>
+   <dubbo:reference interface="com.shsxt.ego.rpc.service.IContentService"
+                    id="contentServiceProxy"></dubbo:reference>
+
 	
 
 </beans>

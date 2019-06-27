@@ -180,4 +180,20 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="contentListByParams" parameterType="com.shsxt.ego.rpc.query.ContentQuery" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />,<include refid="Blob_Column_List" />
+        from tb_content
+        where category_id=#{categoryId}
+  </select>
+
+  <delete id="deleteContents">
+        delete  from tb_content
+        where id in
+        <foreach collection="list" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+  </delete>
+
+
 </mapper>
