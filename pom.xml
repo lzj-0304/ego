@@ -13,6 +13,7 @@
         <module>ego-code-generate</module>
         <module>ego-rpc</module>
         <module>ego-manager-web</module>
+        <module>ego-portal-web</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
