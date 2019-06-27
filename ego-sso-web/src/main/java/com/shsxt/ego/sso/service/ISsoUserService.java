@@ -1,11 +1,10 @@
-package com.shsxt.ego.rpc.service;
+package com.shsxt.ego.sso.service;
 
 import com.shsxt.ego.model.EgoResult;
 import com.shsxt.ego.rpc.pojo.TbUser;
 
-public interface IUserService {
-
+public interface ISsoUserService {
     EgoResult loadUserByCondService(String param, Integer type);
 
-    EgoResult saveUserTbService(TbUser tbUser);
+    EgoResult saveUserService(TbUser tbUser);
 }

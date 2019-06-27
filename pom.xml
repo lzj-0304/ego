@@ -14,6 +14,7 @@
         <module>ego-rpc</module>
         <module>ego-manager-web</module>
         <module>ego-portal-web</module>
+        <module>ego-sso-web</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

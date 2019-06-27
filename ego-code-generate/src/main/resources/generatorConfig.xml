@@ -38,14 +38,11 @@
 
 
 
-        <table tableName="tb_content_category" domainObjectName="TbContentCategory"
+        <table tableName="tb_user" domainObjectName="TbUser"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
-        <table tableName="tb_content" domainObjectName="TbContent"
-               enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+
     </context>
 
 </generatorConfiguration>

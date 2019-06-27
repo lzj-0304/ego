@@ -24,7 +24,8 @@
 	<dubbo:protocol name="dubbo" port="20000" />
 	 
 	 <!-- 发布dubbo服务 -->
-	 <dubbo:service interface="com.shsxt.ego.rpc.service.IUserService" ref="userServiceImpl"></dubbo:service>
+	 <dubbo:service interface="com.shsxt.ego.rpc.service.IUserService"
+					ref="userServiceImpl"></dubbo:service>
 	<dubbo:service interface="com.shsxt.ego.rpc.service.IItemService"
 				   ref="itemServiceImpl"></dubbo:service>
 	<dubbo:service interface="com.shsxt.ego.rpc.service.IItemCatService"
