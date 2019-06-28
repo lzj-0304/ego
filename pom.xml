@@ -15,6 +15,9 @@
         <module>ego-manager-web</module>
         <module>ego-portal-web</module>
         <module>ego-sso-web</module>
+        <module>ego-item-web</module>
+        <module>ego-order-web</module>
+        <module>ego-search-web</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

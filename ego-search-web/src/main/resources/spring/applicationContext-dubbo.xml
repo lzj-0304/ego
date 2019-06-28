@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo 
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+   
+   <!-- 添加服务消费者的标志 -->
+   <dubbo:application name="ego-search-web-consumer"/>
+   <!-- 指定注册中心 -->
+   <dubbo:registry address="127.0.0.1:2181" protocol="zookeeper" />
+   <dubbo:reference interface="com.shsxt.ego.rpc.service.IUserService"
+                    id="userServiceProxy"></dubbo:reference>
+</beans>
