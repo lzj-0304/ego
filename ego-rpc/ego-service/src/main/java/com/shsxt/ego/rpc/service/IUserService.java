@@ -8,4 +8,6 @@ public interface IUserService {
     EgoResult loadUserByCondService(String param, Integer type);
 
     EgoResult saveUserTbService(TbUser tbUser);
+
+    TbUser selectUserByUserName(String username);
 }

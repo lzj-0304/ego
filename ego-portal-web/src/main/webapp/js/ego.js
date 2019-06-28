@@ -13,7 +13,7 @@ var TT = TAOTAO = {
 				success : function(data){
 					if(data.status == 200){
 						var username = data.data.username;
-						var html = username + "，欢迎来到淘淘！" +
+						var html = username + "，欢迎来到易购！" +
 								"<a href=\"javascript:TT.logout()\" " +
 								"class=\"link-logout\">[退出]</a>";
 						$("#loginbar").html(html);

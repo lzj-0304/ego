@@ -45,4 +45,9 @@ public class UserServiceImpl implements IUserService {
         }
         return result;
     }
+
+    @Override
+    public TbUser selectUserByUserName(String username) {
+        return userMapper.loadUserByCond(username,1);
+    }
 }

@@ -83,7 +83,7 @@
                 <configuration>
                     <!-- 不需要上下文  http://localhost:8080/xxx.jsp -->
                     <path>/</path>
-                    <port>8989</port>
+                    <port>8081</port>
                 </configuration>
             </plugin>
         </plugins>

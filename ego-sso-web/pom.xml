@@ -68,8 +68,26 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
         </dependency>
+
+        <!--Spring-Data-Redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+
+
+
     </dependencies>
 
     <build>
@@ -82,7 +100,7 @@
                 <configuration>
                     <!-- 不需要上下文  http://localhost:8080/xxx.jsp -->
                     <path>/</path>
-                    <port>8686</port>
+                    <port>8083</port>
                 </configuration>
             </plugin>
         </plugins>
