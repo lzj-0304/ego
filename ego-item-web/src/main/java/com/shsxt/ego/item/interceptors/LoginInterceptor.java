@@ -4,7 +4,6 @@ import com.shsxt.ego.rpc.pojo.TbUser;
 import com.shsxt.ego.utils.CookieUtils;
 import com.shsxt.ego.utils.JsonUtils;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

@@ -68,7 +68,7 @@
 		                <div class="p-img">
 		                	<a href="/item/${cart.value.item.id }.html" target="_blank">
 		                		<img clstag="clickcart|keycount|xincart|p-imglistcart" 
-		                		src="${cart.value.item.images[0]}" 
+		                		src="${cart.value.item.image}"
 		                			alt="${cart.value.item.title}" width="52" height="52">
 		                	</a>
 		                </div>    

@@ -100,5 +100,10 @@ public class ItemServiceImpl implements IItemService {
         return new EgoResult();
     }
 
+    @Override
+    public TbItem loadItemService(Long itemId) {
+        return itemMapper.selectByPrimaryKey(itemId);
+    }
+
 
 }

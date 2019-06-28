@@ -30,4 +30,6 @@ public interface IItemService {
     EgoResult updateItem(TbItem tbItem,TbItemDesc tbItemDesc, TbItemParamItem itemParamItem);
 
     EgoResult itemDelete(List<Long> itemIds);
+
+    TbItem loadItemService(Long itemId);
 }

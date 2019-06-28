@@ -32,6 +32,15 @@ public class TbItem implements Serializable {
 
     private Long itemParamId;// 商品分类规格id
 
+    private String[] images;
+
+    public String[] getImages() {
+        return images;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
+    }
 
     public Long getItemParamId() {
         return itemParamId;
