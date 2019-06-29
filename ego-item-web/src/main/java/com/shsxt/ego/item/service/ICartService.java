@@ -1,4 +1,4 @@
-package com.shsxt.ego.item.service.impl;
+package com.shsxt.ego.item.service;
 
 import com.shsxt.ego.item.model.CartItem;
 

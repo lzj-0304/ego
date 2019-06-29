@@ -40,4 +40,6 @@
 				   ref="contentCategoryServiceImpl"></dubbo:service>
 	<dubbo:service interface="com.shsxt.ego.rpc.service.IContentService"
 				   ref="contentServiceImpl"></dubbo:service>
+	<dubbo:service interface="com.shsxt.ego.rpc.service.IOrderService"
+				   ref="orderServiceImpl"></dubbo:service>
 	 </beans>

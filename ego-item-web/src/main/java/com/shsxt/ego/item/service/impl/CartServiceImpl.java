@@ -2,6 +2,7 @@ package com.shsxt.ego.item.service.impl;
 
 
 import com.shsxt.ego.item.model.CartItem;
+import com.shsxt.ego.item.service.ICartService;
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.service.IItemService;
 import com.shsxt.ego.utils.JsonUtils;

@@ -30,7 +30,7 @@
 </div>
 <div class="w cart">
 	<div class="cart-hd group">
-		<h3>购物车列表</h3>
+		<h3>订单列表</h3>
 	</div>
 	<div id="show">
 	

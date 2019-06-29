@@ -1,6 +1,6 @@
 package com.shsxt.ego.item.controller;
 
-import com.shsxt.ego.item.service.impl.ICartService;
+import com.shsxt.ego.item.service.ICartService;
 import com.shsxt.ego.rpc.pojo.TbUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

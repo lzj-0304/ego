@@ -38,7 +38,15 @@
 
 
 
-        <table tableName="tb_user" domainObjectName="TbUser"
+        <table tableName="tb_order" domainObjectName="TbOrder"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+        <table tableName="tb_order_item" domainObjectName="TbOrderItem"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"></table>
+        <table tableName="tb_order_shipping" domainObjectName="TbOrderShipping"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>
