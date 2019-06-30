@@ -12,7 +12,7 @@
 <div class="w">
     <div id="logo">
     	<a href="http://localhost:8082" clstag="passport|keycount|login|01">
-    		<img src="/images/taotao-logo.gif" alt="易购" width="170" height="60"/>
+    		<img src="/images/ego-logo.gif" alt="易购" width="170" height="60"/>
     	</a><b></b>
    	</div>
 </div>

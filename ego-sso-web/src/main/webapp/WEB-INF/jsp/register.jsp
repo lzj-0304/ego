@@ -88,6 +88,17 @@
 								id="phone_error"></label>
 						</div>
 					</div>
+                    <div class="item" id="dphonecode">
+                        <span class="label"><b class="ftx04">*</b>验证码：</span>
+
+                        <div class="fl item-ifo">
+                            <input type="text" id="code" maxlength="11" name="phone"
+                                   class="text" tabindex="4"
+                                   autocomplete="off" />  <label
+                                id="code_succeed" class="blank"></label> <label
+                                id="code_error"></label>
+                        </div>
+                    </div>
 					</div>
                 <div class="item item-new">
                     <span class="label">&nbsp;</span>
