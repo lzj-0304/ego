@@ -1,4 +1,4 @@
-onePicUploadDate.prototype.format = function(format){
+Date.prototype.format = function(format){ 
     var o =  { 
     "M+" : this.getMonth()+1, //month 
     "d+" : this.getDate(), //day 
@@ -25,7 +25,7 @@ var TT = EGO = {
 		//指定上传文件参数名称
 		filePostName  : "uploadFile",  /*<input type='file' name='uploadFile'>*/
 		//指定上传文件请求的url。
-		uploadJson : '/file/upload',
+		uploadJson : '/pic/upload',
 		//上传类型，分别为image、flash、media、file
 		dir : "image"
 	},
@@ -51,9 +51,7 @@ var TT = EGO = {
             return '正常';
         } else if(val == 2){
         	return '<span style="color:red;">下架</span>';
-        }else if(val == 3){
-			return '<span style="color:blueviolet;">删除</span>';
-		} else {
+        } else {
         	return '未知';
         }
     },
@@ -192,7 +190,7 @@ var TT = EGO = {
     },
     
     changeItemParam : function(node,formId){
-    	$.getJSON("/item/param/query/" + node.id,function(data){
+    	$.getJSON("/item/param/query/itemcatid/" + node.id,function(data){
 			  if(data.status == 200 && data.data){
 				 $("#"+formId+" .params").show();
 				 var paramData = JSON.parse(data.data.paramData);
