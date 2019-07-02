@@ -34,7 +34,7 @@ public class ManagerItemParamController {
      * 处理根据商品类名id，查询规格模板请求
      * @return
      */
-    @RequestMapping(value="item/param/query/itemcatid/{cid}")
+    @RequestMapping(value="item/param/query/{cid}")
     @ResponseBody
     public EgoResult itemParamQuery(@PathVariable Long cid){
         return itemParamService.loadItemParamByCid(cid);
