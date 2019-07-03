@@ -37,7 +37,7 @@ public class TestEs02 {
         System.out.println(elasticsearchTemplate);
         SearchQuery searchQuery =new NativeSearchQueryBuilder()
                 .withQuery(QueryBuilders.multiMatchQuery("手机","title"))
-                .withHighlightFields(new HighlightBuilder.Field("title").postTags("</font>").preTags("<font style='red'>"))
+                .withHighlightFields(new HighlightBuilder.Field("title").postTags("</font>").preTags("<font color='red'>"))
                 .withPageable(new PageRequest(0,10))
                 .build();
         Page<GoodsVo> result = elasticsearchTemplate.queryForPage(searchQuery, GoodsVo.class, new SearchResultMapper() {

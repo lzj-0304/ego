@@ -56,7 +56,7 @@ public class GoodsVo implements Serializable {
     }
 
     public String getImage() {
-        return image;
+        return image.split(",")[0];
     }
 
     public void setImage(String image) {
