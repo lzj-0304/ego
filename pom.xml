@@ -57,7 +57,7 @@
         <!--
           es 搜索
         -->
-        <es.version>2.4.5</es.version>
+        <es.version>6.8.13</es.version>
         <spring.data.es.version>2.0.11.RELEASE</spring.data.es.version>
 
     </properties>
